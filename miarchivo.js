@@ -48,7 +48,7 @@ function mostrarProductos() {
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
         console.log(
-            `${producto.id}. ${producto.productName}. $${producto.precio}<br>`
+            `${producto.id}. ${producto.productName}. $${producto.precio}`
         );
     }
 }
