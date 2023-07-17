@@ -1,123 +1,109 @@
-// Variables para los artículos y sus precios
-let articulo1 = { nombre: 'Cable 1m', precio: 10 };
-let articulo2 = { nombre: 'Caja electrica 2x4', precio: 20 };
-let articulo3 = { nombre: 'Contacto doble', precio: 30 };
-let articulo4 = { nombre: 'Apagador sencillo', precio: 40 };
-let articulo5 = { nombre: 'Braker sencillo', precio: 50 };
-let articulo6 = { nombre: 'Bombilla sencilla', precio: 60 };
-let articulo7 = { nombre: 'Tira Luces LED', precio: 70 };
-let articulo8 = { nombre: 'Artículo 8', precio: 80 };
-
-// Función para mostrar los artículos disponibles
-function mostrarArticulos() {
-    alert("Revisa la consola para consultar la lista de articulos y sus precios!")
-    console.log('Artículos disponibles:');
-    console.log('1. ' + articulo1.nombre + ' - $' + articulo1.precio);
-    console.log('2. ' + articulo2.nombre + ' - $' + articulo2.precio);
-    console.log('3. ' + articulo3.nombre + ' - $' + articulo3.precio);
-    console.log('4. ' + articulo4.nombre + ' - $' + articulo4.precio);
-    console.log('5. ' + articulo5.nombre + ' - $' + articulo5.precio);
-    console.log('6. ' + articulo6.nombre + ' - $' + articulo6.precio);
-    console.log('7. ' + articulo7.nombre + ' - $' + articulo7.precio);
-    console.log('8. ' + articulo8.nombre + ' - $' + articulo8.precio);
-}
-
-// Función para obtener el nombre de un artículo seleccionado
-function obtenerNombreArticulo(opcion) {
-    let nombre = '';
-
-    switch (opcion) {
-        case 1:
-            nombre = articulo1.nombre;
-            break;
-        case 2:
-            nombre = articulo2.nombre;
-            break;
-        case 3:
-            nombre = articulo3.nombre;
-            break;
-        case 4:
-            nombre = articulo4.nombre;
-            break;
-        case 5:
-            nombre = articulo5.nombre;
-            break;
-        case 6:
-            nombre = articulo6.nombre;
-            break;
-        case 7:
-            nombre = articulo7.nombre;
-            break;
-        case 8:
-            nombre = articulo8.nombre;
-            break;
+// Array de productos
+const productos = [
+    {
+        id: 1,
+        productName: "Cable 1m",
+        precio: 20
+    },
+    {
+        id: 2,
+        productName: "Caja Electrica 2x4",
+        precio: 50
+    },
+    {
+        id: 3,
+        productName: "Contacto doble",
+        precio: 65
+    },
+    {
+        id: 4,
+        productName: "Apagador sencillo",
+        precio: 45
+    },
+    {
+        id: 5,
+        productName: "Braker sencillo",
+        precio: 70
+    },
+    {
+        id: 6,
+        productName: "Bombilla sencilla",
+        precio: 40
+    },
+    {
+        id: 7,
+        productName: "Tira Luces LED (5m)",
+        precio: 250
+    },
+    {
+        id: 8,
+        productName: "Artículo 8",
+        precio: 140
     }
+]
 
-    return nombre;
-}
-
-// Función para obtener el precio de un artículo seleccionado
-function obtenerPrecioArticulo(opcion) {
-    let precio = 0;
-
-    switch (opcion) {
-        case 1:
-            precio = articulo1.precio;
-            break;
-        case 2:
-            precio = articulo2.precio;
-            break;
-        case 3:
-            precio = articulo3.precio;
-            break;
-        case 4:
-            precio = articulo4.precio;
-            break;
-        case 5:
-            precio = articulo5.precio;
-            break;
-        case 6:
-            precio = articulo6.precio;
-            break;
-        case 7:
-            precio = articulo7.precio;
-            break;
-        case 8:
-            precio = articulo8.precio;
-            break;
+// Función para mostrar los productos disponibles disponibles
+function mostrarProductos() {
+    for (let i = 0; i < productos.length; i++) {
+        const producto = productos[i];
+        console.log(
+            `${producto.id}. ${producto.productName}. $${producto.precio}<br>`
+        );
     }
-
-    return precio;
 }
 
-// Función para calcular la suma total de los precios de los artículos
-function calcularSumaTotal() {
-    let sumaTotal = 0;
-    let continuar = true;
+let carrito = []
+let producto;
 
-    while (continuar) {
+function seleccionarProducto() {
+    let productoSeleccionado;
 
-        let opcion = parseInt(prompt('Ingrese el número del artículo que desea agregar (0 para salir):'));
-        if (opcion === 0) {
-            continuar = false; // Si el usuario selecciona 0, se detiene el ciclo
-        } else if (opcion < 1 || opcion > 8) {
-            alert('Opción inválida. Por favor, seleccione un número válido.');
+    while (true) {
+        productoSeleccionado = parseInt(prompt("Ingrese el número del producto que desea (1-8)"));
+
+        // Verificar si el número ingresado es válido
+        if (!isNaN(productoSeleccionado) && productoSeleccionado >= 1 && productoSeleccionado <= 8) {
+            // Buscar el producto en el array de productos
+            producto = productos.find((p) => p.id === productoSeleccionado);
+            break;
         } else {
-            let precioArticulo = obtenerPrecioArticulo(opcion);
-            sumaTotal += precioArticulo; // Suma de el precio del artículo al total
-            alert('Has agregado: ' + obtenerNombreArticulo(opcion) + ' - $' + precioArticulo);
-            console.log('Has agregado: ' + obtenerNombreArticulo(opcion) + ' - $' + precioArticulo);
-        }
-
-        let respuesta = prompt('¿Deseas agregar otro artículo? (si/no)');
-        if (respuesta.toLowerCase() == 'no') {
-            continuar = false;
+            alert("¡Ingrese un número válido de producto!");
         }
     }
-
-    return sumaTotal;
 }
 
-mostrarArticulos();
-let sumaTotal = calcularSumaTotal();
-console.log('La suma total de los precios de los artículos es: $' + sumaTotal);
+function agregarCarrito() {
+    if (producto) {
+        cantidad = parseInt(prompt("¿Que cantidad desea?"))
+        carrito.push({
+            producto: producto.productName,
+            cantidad: cantidad,
+            subtotal: producto.precio * cantidad
+        });
+        const ultimoProductoAgregado = carrito[carrito.length - 1];
+        alert(`Producto agregado al carrito: ${ultimoProductoAgregado.producto}, Cantidad: ${ultimoProductoAgregado.cantidad}, Subtotal: $${ultimoProductoAgregado.subtotal}`);
+        console.log(`Producto agregado al carrito: ${ultimoProductoAgregado.producto}, Cantidad: ${ultimoProductoAgregado.cantidad}, Subtotal: $${ultimoProductoAgregado.subtotal}`);
+    } else {
+        alert("El producto seleccionado no existe.");
+    }
+}
+
+// Funcion para confirmar si desea agregar otro producto al carrito
+function otroProducto() {
+    while (true) {
+        seleccionarProducto();
+        agregarCarrito();
+
+        if (!confirm("¿Desea agregar otro producto?")) {
+            break;
+        }
+    }
+}
+
+// Función para calcular la suma total de los precios de los productos
+function calcularSumaTotal() {
+    let sumaTotal = carrito.reduce((suma, i) => suma + i.subtotal, 0)
+    console.log(`El total es: ${sumaTotal}`)
+}
+otroProducto()
+calcularSumaTotal()
