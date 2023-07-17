@@ -44,6 +44,7 @@ const productos = [
 
 // Función para mostrar los productos disponibles disponibles
 function mostrarProductos() {
+    alert("¡Revisa la consola para ver la lista de productos y sus precios!")
     for (let i = 0; i < productos.length; i++) {
         const producto = productos[i];
         console.log(
