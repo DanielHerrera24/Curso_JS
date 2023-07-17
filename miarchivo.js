@@ -52,6 +52,7 @@ function mostrarProductos() {
         );
     }
 }
+mostrarProductos()
 
 let carrito = []
 let producto;
