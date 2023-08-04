@@ -1,0 +1,93 @@
+// Array de productos
+const productos = [
+    {
+        id: 1,
+        productName: "Apagador Decora",
+        precio: 50,
+        img: "./imgs/apagador decora-min.jpg"
+    },
+    {
+        id: 2,
+        productName: "Apagador combinado D8",
+        precio: 80,
+        img: "./imgs/apagador combinado D8-min.jpg"
+    },
+    {
+        id: 3,
+        productName: "Apagador doble D8 sencillo",
+        precio: 75,
+        img: "./imgs/apagador doble D8 sencillo-min.jpg"
+    },
+    {
+        id: 4,
+        productName: "Apagador inteligente doble",
+        precio: 270,
+        img: "./imgs/apagador doble inteligente-min.jpg"
+    },
+    {
+        id: 5,
+        productName: "Caja 2x4",
+        precio: 50,
+        img: "./imgs/caja 2x4-min.jpg"
+    },
+    {
+        id: 6,
+        productName: "Caja 4x4",
+        precio: 100,
+        img: "./imgs/caja 4x4-min.jpg"
+    },
+    {
+        id: 7,
+        productName: "Caja octagonal",
+        precio: 90,
+        img: "./imgs/caja octagonal-min.jpg"
+    },
+    {
+        id: 8,
+        productName: "Tapa decora doble",
+        precio: 45,
+        img: "./imgs/tapa decora doble-min.jpg"
+    },
+    {
+        id: 9,
+        productName: "Tapa D11",
+        precio: 75,
+        img: "./imgs/tapa D11-min.jpg"
+    },
+    {
+        id: 10,
+        productName: "Tapa D81",
+        precio: 95,
+        img: "./imgs/tapa D81-min.jpg"
+    },
+    {
+        id: 11,
+        productName: "Contratuercas",
+        precio: 30,
+        img: "./imgs/contratuercas-min.jpg"
+    },
+    {
+        id: 12,
+        productName: "Foco LED",
+        precio: 70,
+        img: "./imgs/Foco LED-min.jpg"
+    },
+    {
+        id: 13,
+        productName: "Spot LED",
+        precio: 50,
+        img: "./imgs/spot LED-min.jpg"
+    },
+    {
+        id: 14,
+        productName: "Reflector con sensor",
+        precio: 140,
+        img: "./imgs/Reflector con sensor-min.jpg"
+    },
+    {
+        id: 15,
+        productName: "Tira LED 5m",
+        precio: 230,
+        img: "./imgs/tira LED 5m-min.jpg"
+    }
+]

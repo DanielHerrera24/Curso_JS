@@ -1,111 +1,145 @@
-// Array de productos
-const productos = [
-    {
-        id: 1,
-        productName: "Cable 1m",
-        precio: 20
-    },
-    {
-        id: 2,
-        productName: "Caja Electrica 2x4",
-        precio: 50
-    },
-    {
-        id: 3,
-        productName: "Contacto doble",
-        precio: 65
-    },
-    {
-        id: 4,
-        productName: "Apagador sencillo",
-        precio: 45
-    },
-    {
-        id: 5,
-        productName: "Braker sencillo",
-        precio: 70
-    },
-    {
-        id: 6,
-        productName: "Bombilla sencilla",
-        precio: 40
-    },
-    {
-        id: 7,
-        productName: "Tira Luces LED (5m)",
-        precio: 250
-    },
-    {
-        id: 8,
-        productName: "Artículo 8",
-        precio: 140
-    }
-]
+const carrito = [];
 
-// Función para mostrar los productos disponibles disponibles
+// Funcion para mostrar articulos en el DOM
 function mostrarProductos() {
-    alert("¡Revisa la consola para ver la lista de productos y sus precios!")
-    for (let i = 0; i < productos.length; i++) {
-        const producto = productos[i];
-        console.log(
-            `${producto.id}. ${producto.productName}. $${producto.precio}`
-        );
-    }
-}
-mostrarProductos()
+    const contProductos = document.getElementById("cont-productos");
 
-let carrito = []
-let producto;
+    for (const producto of productos) {
+        // Desestructurar producto
+        const { id, productName, precio, img } = producto
+        const cardProd = document.createElement("div")
+        cardProd.innerHTML = `
+            <img src='${img}' class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title text">${productName}</h5>
+                <h5 class="precio text">$${precio} MXN</h5>
+                <button class="btn btn-primary" id="${id}">Agregar al carrito</button>
+            </div>
+        `
+        cardProd.className = "card"
+        contProductos.append(cardProd)
 
-function seleccionarProducto() {
-    let productoSeleccionado;
-
-    while (true) {
-        productoSeleccionado = parseInt(prompt("Ingrese el número del producto que desea (1-8)"));
-
-        // Verificar si el número ingresado es válido
-        if (!isNaN(productoSeleccionado) && productoSeleccionado >= 1 && productoSeleccionado <= 8) {
-            // Buscar el producto en el array de productos
-            producto = productos.find((p) => p.id === productoSeleccionado);
-            break;
-        } else {
-            alert("¡Ingrese un número válido de producto!");
-        }
+        const btnAgregarCarrito = document.getElementById(`${id}`)
+        btnAgregarCarrito.addEventListener("click", () => agregarCarrito(producto));
     }
 }
 
-function agregarCarrito() {
-    if (producto) {
-        cantidad = parseInt(prompt("¿Que cantidad desea?"))
-        carrito.push({
-            producto: producto.productName,
-            cantidad: cantidad,
-            subtotal: producto.precio * cantidad
-        });
-        const ultimoProductoAgregado = carrito[carrito.length - 1];
-        alert(`Producto agregado al carrito: ${ultimoProductoAgregado.producto}, Cantidad: ${ultimoProductoAgregado.cantidad}, Subtotal: $${ultimoProductoAgregado.subtotal}`);
-        console.log(`Producto agregado al carrito: ${ultimoProductoAgregado.producto}, Cantidad: ${ultimoProductoAgregado.cantidad}, Subtotal: $${ultimoProductoAgregado.subtotal}`);
+// Funcion para agregar al carrito
+function agregarCarrito(productoAgregado) {
+    const productoEnCarrito = carrito.find((producto) => producto.id === productoAgregado.id)
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad += 1
+        actCarrito()
     } else {
-        alert("El producto seleccionado no existe.");
+        const prodCantidad = { ...productoAgregado, cantidad: 1 }
+        carrito.push(prodCantidad)
+        actCarrito()
     }
 }
 
-// Funcion para confirmar si desea agregar otro producto al carrito
-function otroProducto() {
-    while (true) {
-        seleccionarProducto();
-        agregarCarrito();
+function actCarrito() {
+    const carritoCont = document.getElementById("barra-carrito")
+    carritoCont.innerHTML = "";
 
-        if (!confirm("¿Desea agregar otro producto?")) {
-            break;
+    for (const producto of carrito) {
+        // Desestructurar producto
+        const { id, productName, precio, img, cantidad } = producto
+        const cardCarrito = document.createElement("div")
+        cardCarrito.innerHTML = `
+                <img src='${img}' class="card-img-top img-card">
+                <div class="card-body">
+                    <h5 class="card-title text>${productName}</h5>
+                    <h5 class="precio text>$${precio} MXN</h5>
+                    <h5 class="text">Cantidad: ${cantidad}</h5>
+                    <h5>Total: $${cantidad * precio} MXN</h5>
+                </div>
+        `
+        cardCarrito.className = "card"
+        cardCarrito.classList.add("card-carrito")
+        cardCarrito.setAttribute("id", `producto${id}`)
+        carritoCont.append(cardCarrito)
+    }
+}
+
+// Funcion para eliminar el articulo individual (ultima entrega)
+
+// Funcion para vaciar carrito
+let vaciarCarrito = document.getElementById("vaciar-carrito");
+vaciarCarrito.addEventListener("click", () => {
+
+    if (carrito.length >= 1) {
+        // Mostrar una alerta de confirmación
+        let confirmacion = confirm("¿Estás seguro de vaciar el carrito?");
+        if (confirmacion) {
+            carrito.length = 0;
+            actCarrito(); // Actualizar el carrito en el DOM
         }
     }
+});
+
+mostrarProductos();
+
+// Mantiene los articulos en el carrito como la ultima vez
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("theme") == "dark") {
+        darkMode()
+    } else {
+        lightMode()
+    }
+})
+
+// Funcion de dark mode
+let btnDarkMode = document.querySelector("#btn-dark-mode")
+
+// Funcion para activar darkMode o lightMode dando clic al boton
+btnDarkMode.addEventListener("click", function () {
+    if (localStorage.getItem("theme") == "dark") {
+        lightMode()
+    } else {
+        darkMode()
+    }
+})
+
+// Funcion de darkMode
+function darkMode() {
+    let body = document.querySelector("body")
+    body.classList.add("bg-black")
+
+    let texto = document.querySelector(".text")
+    texto.classList.add("tx-white")
+
+    let barraCarrito = document.querySelector("#offcanvasRight")
+    barraCarrito.classList.add("bg-black")
+
+    let carritoTitulo = document.querySelector(".offcanvas-title")
+    carritoTitulo.classList.add("tx-white")
+
+    localStorage.setItem("theme", "dark")
 }
 
-// Función para calcular la suma total de los precios de los productos
-function calcularSumaTotal() {
-    let sumaTotal = carrito.reduce((suma, i) => suma + i.subtotal, 0)
-    console.log(`El total es: ${sumaTotal}`)
+// Funcion de light mode
+function lightMode() {
+    let body = document.querySelector("body")
+    body.classList.remove("bg-black")
+
+    let texto = document.querySelector(".text")
+    texto.classList.remove("tx-white")
+
+    let barraCarrito = document.querySelector("#offcanvasRight")
+    barraCarrito.classList.remove("bg-black")
+
+    let carritoTitulo = document.querySelector(".offcanvas-title")
+    carritoTitulo.classList.remove("tx-white")
+
+    localStorage.setItem("theme", "light")
 }
-otroProducto()
-calcularSumaTotal()
+
+// Mantiene el tema (dark o light) como la ultima vez
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("theme") == "dark") {
+        darkMode()
+    } else {
+        lightMode()
+    }
+})

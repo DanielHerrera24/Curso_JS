@@ -1,0 +1,164 @@
+/* Reset */
+/* Reset Global*/
+html,
+body {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    top: 0;
+}
+
+/* Grid-body para futuro aside para filtros */
+
+/* body {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "aside section";
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    min-height: 100%;
+}
+
+aside {
+    width: 300px;
+    grid-area: aside;
+    background-color: #bbf7f9;
+}
+
+section {
+    grid-area: section;
+} */
+
+/* Header */
+header {
+    width: 100%;
+    background-color: #b7d8ff;
+    grid-area: header;
+    position: fixed;
+    z-index: 1;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav img {
+    height: 11vh;
+}
+
+main {
+    margin-top: 11vh;
+}
+
+.cont-carrito-btn {
+    display: flex;
+    align-items: center;
+}
+
+#btn-dark-mode {
+    border: none;
+    border-radius: 5px;
+    padding: 1vh;
+}
+
+#btn-carrito {
+    display: inline-block;
+    padding: 1vh 1vh .6vh 1vh;
+    margin: 0 5vh;
+    font-size: 2.2vh;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #fff;
+    color: #0c59b7;
+}
+
+/* MAIN */
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 7vh;
+    padding: 5vh;
+    font-weight: bolder;
+}
+
+#cont-productos {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5vh;
+}
+
+#cont-carrito {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5vh;
+}
+
+.card {
+    border-radius: 10px;
+    width: 15rem;
+}
+
+.card:hover {
+    box-shadow: 0 0 5px 5px rgba(116, 116, 116, 0.442);
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    background-color: #000c;
+    color: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+.offcanvas-title {
+    font-size: 2.5rem;
+    padding: 3vh;
+}
+
+.btn-close {
+    background-color: #ffffff;
+}
+
+/* Dark mode */
+.tx-white {
+    color: #fff;
+}
+
+.bg-black {
+    background-color: #000c;
+}
+
+/* Carrito */
+.card-carrito {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.card-carrito:hover {
+    box-shadow: none;
+}
+
+.img-card {
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+}
