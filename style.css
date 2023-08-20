@@ -11,32 +11,32 @@ body {
     top: 0;
 }
 
-/* Grid-body para futuro aside para filtros */
+/* Global */
+.row {
+    flex-wrap: nowrap;
+}
 
-/* body {
+.titulo {
+    font-size: 7vh;
+    padding: 5vh;
+    font-weight: bolder;
+}
+
+/* Grid */
+body {
     display: grid;
     grid-template-areas:
-        "header header"
-        "aside section";
-    grid-template-columns: 300px 1fr;
-    grid-template-rows: 1fr;
+        "header"
+        "main";
+    grid-template-columns: 1fr;
+    grid-template-rows: 11vh 1fr;
     min-height: 100%;
 }
-
-aside {
-    width: 300px;
-    grid-area: aside;
-    background-color: #bbf7f9;
-}
-
-section {
-    grid-area: section;
-} */
 
 /* Header */
 header {
     width: 100%;
-    background-color: #b7d8ff;
+    background-color: #86b9f6;
     grid-area: header;
     position: fixed;
     z-index: 1;
@@ -51,48 +51,17 @@ nav img {
     height: 11vh;
 }
 
-main {
-    margin-top: 11vh;
-}
-
-.cont-carrito-btn {
-    display: flex;
-    align-items: center;
-}
-
-#btn-dark-mode {
-    border: none;
-    border-radius: 5px;
-    padding: 1vh;
-}
-
-#btn-carrito {
-    display: inline-block;
-    padding: 1vh 1vh .6vh 1vh;
-    margin: 0 5vh;
-    font-size: 2.2vh;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-    background-color: #fff;
-    color: #0c59b7;
-}
-
 /* MAIN */
+main {
+    grid-area: main;
+    padding: 0 2vh 5vh 2vh;
+}
+
 article {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.titulo {
-    font-size: 7vh;
-    padding: 5vh;
-    font-weight: bolder;
+    padding-top: 3vh;
 }
 
 #cont-productos {
@@ -128,25 +97,21 @@ article {
     border-radius: 0 0 10px 10px;
 }
 
-.offcanvas-title {
-    font-size: 2.5rem;
-    padding: 3vh;
-}
-
-.btn-close {
-    background-color: #ffffff;
-}
-
 /* Dark mode */
 .tx-white {
     color: #fff;
 }
 
-.bg-black {
-    background-color: #000c;
+.bg-negro {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Carrito */
+.offcanvas-title {
+    font-size: 2.5rem;
+    padding: 1vh;
+}
+
 .card-carrito {
     display: flex;
     flex-direction: row;
@@ -156,6 +121,25 @@ article {
 
 .card-carrito:hover {
     box-shadow: none;
+}
+
+.card-body-carrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 0 10px 10px 0;
+    padding-left: 5px;
+    height: 100%;
+}
+
+.carrito-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cont-sumaCarrito {
+    display: flex;
+    justify-content: space-between;
 }
 
 .img-card {

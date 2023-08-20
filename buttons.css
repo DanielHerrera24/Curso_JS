@@ -1,0 +1,50 @@
+.cont-carrito-btn {
+    display: flex;
+    align-items: center;
+}
+
+#btn-dark-mode {
+    border: none;
+    border-radius: 5px;
+    padding: 1vh;
+}
+
+#btn-carrito {
+    display: inline-block;
+    padding: 1vh 1vh .6vh 1vh;
+    margin: 0 5vh;
+    font-size: 2.2vh;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #fff;
+    color: #0c59b7;
+}
+
+.btn-close {
+    background-color: #ffffff;
+}
+
+.cont-art-carrito {
+    position: relative;
+}
+
+#dlt-art-carrito {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 10px 10px 0;
+    background-color: red;
+}
+
+.btn-vaciar-carrito {
+    border: none;
+    border-radius: 5px;
+    padding: 1vh;
+    background-color: rgb(235, 55, 55);
+    color: #fff;
+}
