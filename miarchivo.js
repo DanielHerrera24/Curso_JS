@@ -1,13 +1,5 @@
 const carrito = [];
 
-// Fetch para llamar el JSON de los productos
-fetch('productos.json')
-    .then(response => response.json())
-    .then(productos => {
-        mostrarProductos(productos);
-    })
-    .catch(error => console.error('No se pudieron cargar los articulos:', error));
-
 // Funcion para mostrar articulos en el DOM
 function mostrarProductos(productos) {
     const contProductos = document.getElementById("cont-productos");
@@ -44,6 +36,14 @@ function mostrarProductos(productos) {
 
     }
 }
+
+// Fetch para llamar el JSON de los productos
+fetch('./productos.json')
+    .then(response => response.json())
+    .then(productos => {
+        mostrarProductos(productos);
+    })
+    .catch(error => console.error('No se pudieron cargar los articulos:', error));
 
 // Funcion para agregar al carrito
 function agregarCarrito(productoAgregado) {
